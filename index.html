@@ -3,21 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moja pierwsza aplikacja 🚀</title>
+  <title>Uśmiechnij się 😊</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Licznik kliknięć</h1>
-  <p>Wciśnij przycisk, aby zwiększyć licznik.</p>
+  <header>
+    <h1>Uśmiechnij się 😊</h1>
+    <p class="subtitle">Czy dziś się uśmiechnąłeś?</p>
+    <p id="today" class="today"></p>
+  </header>
 
-  <div class="counter">
-    <span id="count">0</span>
-  </div>
+  <main class="card">
+    <div class="question">
+      <button id="yesBtn" class="btn primary">Tak</button>
+      <button id="noBtn"  class="btn">Nie</button>
+    </div>
 
-  <div class="buttons">
-    <button id="increment">➕ Dodaj</button>
-    <button id="reset">🔄 Resetuj</button>
-  </div>
+    <p id="todayStatus" class="today-status">Brak odpowiedzi na dziś.</p>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="value" id="daysTotal">0</div>
+        <div class="label">Liczba dni</div>
+      </div>
+      <div class="stat">
+        <div class="value" id="yesCount">0</div>
+        <div class="label">„Tak” łącznie</div>
+      </div>
+      <div class="stat">
+        <div class="value" id="noCount">0</div>
+        <div class="label">„Nie” łącznie</div>
+      </div>
+      <div class="stat">
+        <div class="value" id="yesPct">0%</div>
+        <div class="label">% uśmiechniętych dni</div>
+      </div>
+      <div class="stat">
+        <div class="value" id="yesStreak">0</div>
+        <div class="label">Passa „Tak”</div>
+      </div>
+    </section>
+
+    <section class="timeline">
+      <h2>Ostatnie 7 dni</h2>
+      <ul id="last7" class="days"></ul>
+      <p class="legend">🟢 = Tak, 🔵 = Nie, ⚪ = brak</p>
+    </section>
+
+    <div class="actions">
+      <button id="resetBtn" class="btn danger">Resetuj dane</button>
+    </div>
+  </main>
+
+  <footer>© 2025 Magda • Smile Tracker</footer>
 
   <script src="app.js"></script>
 </body>
