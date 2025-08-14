@@ -1,74 +1,120 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Twoja strona</title>
-  <style>
-    :root{
-      --bg:#0b1020; --fg:#e6eef7; --muted:#9fb0c6;
-      --card:rgba(255,255,255,.03); --border:rgba(255,255,255,.08);
-      --accent:#6aa8ff; --accent2:#58e0c3; --danger:#d95b6a;
-    }
+:root{
+  --bg:#0b1020; --fg:#e6eef7; --muted:#9fb0c6;
+  --card:rgba(255,255,255,.04); --border:rgba(255,255,255,.10);
+  --accent:#6aa8ff; --accent2:#58e0c3; --danger:#d95b6a;
+}
 
-    *{ box-sizing:border-box }
-    html,body{ margin:0; padding:0 }
-    body{
-      font-family:Arial, system-ui, Segoe UI, Roboto, sans-serif;
-      color:var(--fg); background:
-      radial-gradient(circle at center, #141b2d 0%, #0b1020 70%, #05070e 100%);
-      min-height:100vh; text-align:center; padding:56px 16px 24px;
-    }
+*{ box-sizing:border-box }
+html,body{ margin:0; padding:0 }
+body{
+  font-family:Arial, system-ui, Segoe UI, Roboto, sans-serif;
+  color:var(--fg);
+  background: radial-gradient(circle at center, #141b2d 0%, #0b1020 70%, #05070e 100%);
+  min-height:100vh; text-align:center; padding:56px 16px 24px;
+}
 
-    /* delikatne gwiazdki */
-    body::before{
-      content:""; position:fixed; inset:0; z-index:-1;
-      background:
-        radial-gradient(1px 1px at 20% 30%, #fff8 99%, transparent 100%),
-        radial-gradient(1px 1px at 60% 70%, #fff8 99%, transparent 100%),
-        radial-gradient(1px 1px at 80% 20%, #fff8 99%, transparent 100%),
-        radial-gradient(1px 1px at 30% 80%, #fff8 99%, transparent 100%);
-      background-size: 700px 700px, 900px 900px, 1100px 1100px, 800px 800px;
-      opacity:.22; animation: twinkle 6s infinite alternate ease-in-out;
-    }
-    @keyframes twinkle { from{opacity:.15} to{opacity:.33} }
+/* gwiazdki w tle */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1;
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff8 99%, transparent 100%),
+    radial-gradient(1px 1px at 60% 70%, #fff8 99%, transparent 100%),
+    radial-gradient(1px 1px at 80% 20%, #fff8 99%, transparent 100%),
+    radial-gradient(1px 1px at 30% 80%, #fff8 99%, transparent 100%);
+  background-size:700px 700px, 900px 900px, 1100px 1100px, 800px 800px;
+  opacity:.22; animation: twinkle 6s infinite alternate ease-in-out;
+}
+@keyframes twinkle { from{opacity:.15} to{opacity:.33} }
 
-    h1{ font-size: clamp(28px, 5vw, 48px); margin:0 0 8px; color:#cfe3ff }
-    .subtitle{ color:var(--muted); margin:0 0 8px }
-    .today{ opacity:.8; margin:0 0 18px }
+/* nagłówek */
+h1{ font-size: clamp(28px, 5.4vw, 46px); margin:0 0 8px; color:#cfe3ff }
+.subtitle{ color:var(--muted); margin:0 0 6px }
+.today{ opacity:.85; margin:0 0 18px }
 
-    .card{
-      width:min(880px, 96vw); margin:0 auto;
-      background:var(--card); border:1px solid var(--border);
-      border-radius:16px; padding:24px; box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
+/* karta */
+.card{
+  width:min(880px, 96vw); margin:0 auto;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
 
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:12px 18px; border-radius:10px; border:none; cursor:pointer;
-      background:#2c365e; color:#eef3ff; font-weight:600;
-      box-shadow:0 10px 18px rgba(0,0,0,.25);
-      transition:transform .15s ease, background .2s ease, box-shadow .2s ease, opacity .2s;
-    }
-    .btn:hover{ transform:translateY(-1px); background:#3a4472; box-shadow:0 14px 26px rgba(0,0,0,.28) }
-    .btn.primary{ background:linear-gradient(135deg, var(--accent), var(--accent2)) }
-    .btn.danger{ background:linear-gradient(135deg, #eb8aa1, var(--danger)) }
+/* przyciski tak/nie */
+.question{ display:flex; gap:12px; justify-content:center; margin-bottom:10px }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:14px 18px; border-radius:12px; border:0; cursor:pointer;
+  background:#2c365e; color:#eef3ff; font-weight:700;
+  box-shadow:0 10px 18px rgba(0,0,0,.25);
+  transition:transform .15s ease, filter .15s ease;
+}
+.btn:hover{ transform:translateY(-1px); filter:brightness(1.05) }
+.btn.primary{ background:linear-gradient(135deg, var(--accent), var(--accent2)) }
+.btn.ghost{ background:#2b3153 }
+.btn.danger{ background:linear-gradient(135deg, #eb8aa1, var(--danger)) }
 
-    footer{ opacity:.6; margin-top:18px; font-size:.9rem }
-  </style>
-</head>
-<body>
+/* status */
+.today-status{ margin:8px 0 20px; color:#d7e3ff }
 
-  <h1>🐾 Witaj na stronie</h1>
-  <p class="subtitle">Twoje miejsce w sieci</p>
+/* statystyki */
+.stats{
+  display:grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap:12px; margin: 0 auto 18px; width:min(860px, 100%);
+}
+.stat{
+  background:rgba(255,255,255,.05); border:1px solid var(--border);
+  border-radius:14px; padding:12px 10px;
+}
+.value{ font-size: clamp(22px, 4vw, 30px); font-weight:800 }
+.label{ color:var(--muted); font-size:.92rem }
 
-  <div class="card">
-    <img src="foczka.jpg" alt="Foczka" style="max-width:100%; border-radius:12px; margin-bottom:16px;">
-    <p class="today">Dzisiaj jest wyjątkowy dzień!</p>
-    <button class="btn primary">Kliknij mnie</button>
-  </div>
+/* linia czasu */
+.timeline h2{ margin:12px 0 8px; color:#cfe3ff }
+.days{
+  list-style:none; display:grid; grid-template-columns: repeat(7, 1fr);
+  gap:10px; padding:0; margin:0 auto 8px; width:min(680px, 100%);
+}
+.days li{
+  background:rgba(255,255,255,.05); border:1px solid var(--border);
+  border-radius:12px; padding:10px 6px;
+}
+.days .sym{ font-size:22px; display:block; margin-bottom:6px }
+.days .dt{ color:var(--muted); font-size:.85rem }
 
-  <footer>© 2025 Magda. Wszystkie prawa zastrzeżone.</footer>
+.legend{ color:var(--muted); margin:0 0 8px }
+.actions{ margin-top:14px }
+footer{ opacity:.6; margin-top:20px; font-size:.9rem }
 
-</body>
-</html>
+/* ====== RESPONSYWNOŚĆ ====== */
+
+/* tablety / węższe ekrany */
+@media (max-width: 900px){
+  .stats{ grid-template-columns: repeat(3, 1fr); }
+  .days { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* telefony */
+@media (max-width: 600px){
+  .card{ padding:16px }
+  .question{ flex-direction:column }
+  .btn{ width:100% }              /* całe wiersze na dotyk */
+  .stats{
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+  }
+  .days{
+    grid-template-columns: repeat(4, 1fr);
+    gap:8px;
+  }
+  .days li{ padding:10px 4px }
+  .days .sym{ font-size:20px }
+  .days .dt{ font-size:.8rem }
+}
+
+/* bardzo małe telefony */
+@media (max-width: 380px){
+  .stats{ grid-template-columns: 1fr; }
+  .days{ grid-template-columns: repeat(3, 1fr); }
+  .btn{ padding:12px 14px; font-size:0.95rem }
+}
